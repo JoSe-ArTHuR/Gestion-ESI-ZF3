@@ -1,0 +1,65 @@
+<?php
+$libelle = 'Ajouter un livre';
+$this->headTitle($libelle);
+?>
+<h1><?= $this->escapeHtml($libelle) ?></h1>
+<?php
+// This provides a default CSS class and placeholder text for the Nom element:
+$titre = $form->get('titre');
+$titre->setAttribute('class', 'form-control');
+$titre->setAttribute('placeholder', 'Titre du livre');
+
+// This provides a default CSS class and placeholder text for the annee element:
+$annee = $form->get('annee');
+$annee->setAttribute('class', 'form-control');
+$annee->setAttribute('placeholder', 'Annee de parrution');
+
+// This provides a default CSS class and placeholder text for the auteur element:
+$auteur = $form->get('auteur');
+$auteur->setAttribute('class', 'form-control');
+$auteur->setAttribute('placeholder', 'Auteur du livre');
+
+// This provides a default CSS class and placeholder text for the auteur element:
+$resume = $form->get('resume');
+$resume ->setAttribute('class', 'form-control');
+$resume ->setAttribute('placeholder', 'Resumer du livre');
+
+// This provides CSS classes for the submit button:
+$submit = $form->get('submit');
+$submit->setAttribute('class', 'btn btn-primary');
+
+$form->setAttribute('action', $this->url('bibliotheque', ['action' => 'add']));
+$form->prepare();
+
+echo $this->form()->openTag($form);
+?>
+<?php // Wrap the elements in divs marked as form groups, and render the
+      // label, element, and errors separately within ?>
+<div class="form-group">
+    <?= $this->formLabel($titre) ?>
+    <?= $this->formElement($titre) ?>
+    <?= $this->formElementErrors()->render($titre, ['class' => 'help-block']) ?>
+</div>
+
+<div class="form-group">
+    <?= $this->formLabel($annee) ?>
+    <?= $this->formElement($annee) ?>
+    <?= $this->formElementErrors()->render($annee, ['class' => 'help-block']) ?>
+</div>
+
+<div class="form-group">
+    <?= $this->formLabel($auteur) ?>
+    <?= $this->formElement($auteur) ?>
+    <?= $this->formElementErrors()->render($auteur, ['class' => 'help-block']) ?>
+</div>
+
+<div class="form-group">
+    <?= $this->formLabel($resume) ?>
+    <?= $this->formElement($resume) ?>
+    <?= $this->formElementErrors()->render($resume, ['class' => 'help-block']) ?>
+</div>
+
+<?php
+echo $this->formSubmit($submit);
+echo $this->formHidden($form->get('id'));
+echo $this->form()->closeTag();

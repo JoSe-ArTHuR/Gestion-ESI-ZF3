@@ -1,0 +1,84 @@
+<?= $this->doctype() ?>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <?= $this->headTitle('Esi-App')->setSeparator(' - ')->setAutoEscape(false) ?>
+
+        <?= $this->headMeta()
+            ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+            ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+        ?>
+
+        <!-- Le styles -->
+        <?= $this->headLink(['rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/logo.jpg'])
+            ->prependStylesheet($this->basePath('css/style.css'))
+            ->prependStylesheet($this->basePath('css/style1.css'))
+            ->prependStylesheet($this->basePath('css/css/bootstrap-theme.min.css'))
+            ->prependStylesheet($this->basePath('css/css/bootstrap.min.css'))
+            ->prependStylesheet($this->basePath('css/css/font-awesome.min.css'))
+            ->prependStylesheet($this->basePath('css/css/versions.css'))
+            ->prependStylesheet($this->basePath('css/css/responsive.css'))
+            ->prependStylesheet($this->basePath('css/css/custom.css'))
+            ->prependStylesheet($this->basePath('css/css/colors.css'))
+        ?>
+
+        <!-- Scripts -->
+        <?= $this->headScript()
+            ->prependFile($this->basePath('js/js/bootstrap.min.js'))
+            ->prependFile($this->basePath('js/jquery-3.1.0.min.js'))
+        ?>
+    </head>
+    <body class="seo_version">
+            <header class="header header_style_01">
+            <nav class="megamenu navbar navbar-default">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="<?= $this->url('accueil') ?>"><img src="img/logo.jpg" style="width: 102px; height:102px;" alt="image"></a>
+                    </div>
+                    <div id="navbar" class="navbar-collapse collapse">
+                      <ul class="nav navbar-nav navbar-right hidden-md hidden-sm hidden-xs">
+                            <li><a class="btn-light btn-radius btn-brd top-btn" href="<?= $this->url('accueil') ?>"><i class="fas fas-angle-double-right"></i>ZF3</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right menu-top">
+                            <li><a class="active" href="<?= $this->url('accueil') ?>">Accueil</a></li>
+                            <li><a  href="<?= $this->url('ecole') ?>">Ecole </a></li>
+                            <li><a  href="<?= $this->url('admission') ?>">Futurs etudiants</a></li>
+                            <li><a href="<?= $this->url('etudiant') ?>">Etudiants actuels</a></li>
+                            <li><a href="<?= $this->url('bibliotheque') ?>">Bibliotheque</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+<div class="spacer"></div>
+
+				<div class="section wb nopadtop">
+          <div class="container">
+            <div class="row">
+              <?= $this->content ?>
+              <hr>
+              <div>
+          </div>
+        </div>
+
+
+        <footer class="footer">
+            <p>Gestion de l'ESI &copy; <?= date('Y') ?> by.<a href="mailto:josearthur.oued@outlook.com/">JoSe-ArTHuR</a></p>
+        </footer>
+        <a href="#" id="scroll-to-top" class="dmtop global-radius"><i class="fas fa-angle-up"></i></a>
+
+        <!-- ALL JS FILES -->
+        <script src="js/js/all.js"></script>
+        <!-- ALL PLUGINS -->
+        <script src="js/js/custom.js"></script>
+
+        <?= $this->inlineScript() ?>
+    </body>
+</html>

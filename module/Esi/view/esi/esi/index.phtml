@@ -1,0 +1,46 @@
+<?php
+
+$titre = 'Lister les livres';
+$this->headTitle($titre);
+?>
+<h1><?= $this->escapeHtml($titre) ?></h1>
+<div class="col-md-4 pull-left">
+    <a href="<?= $this->url('bibliotheque', ['action' => 'add']) ?>" class="btn btn-sm btn-primary">Ajouter</a>
+</div>
+
+<div class="col-md-4 pull-right">
+    <a><input type="text" name="search" id="search" class="form-control" placeholder="Rechercher"></a>
+</div>
+
+<table class="table table-responsive" id="searchData">
+<tr>
+    <th>Titre du livre</th>
+    <th>Annee de parrution</th>
+    <th>Auteur du livre</th>
+    <th>Resume du livre</th>
+    <th>&nbsp;</th>
+</tr>
+<?php foreach ($bibliotheques as $bibliotheque) : ?>
+    <tr>
+        <td><?= $this->escapeHtml($bibliotheque->titre) ?></td>
+        <td><?= $this->escapeHtml($bibliotheque->annee) ?></td>
+        <td><?= $this->escapeHtml($bibliotheque->auteur) ?></td>
+        <td><?= $this->escapeHtml($bibliotheque->resume) ?></td>
+        <td>
+            <a href="<?= $this->url('bibliotheque', ['action' => 'edit', 'id' => $bibliotheque->id]) ?>" class="btn btn-sm btn-success">Modifier</a>
+            <a href="<?= $this->url('bibliotheque', ['action' => 'delete', 'id' => $bibliotheque->id]) ?>" class="btn btn-sm btn-danger">Supprimer</a>
+        </td>
+    </tr>
+<?php endforeach; ?>
+</table>
+
+<script>
+$(document).ready(function(){
+  $("#search").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#searchData tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>

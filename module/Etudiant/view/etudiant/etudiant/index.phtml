@@ -1,0 +1,31 @@
+<?php
+
+$titre = 'Lister les etudiants';
+$this->headTitle($titre);
+?>
+<h1><?= $this->escapeHtml($titre) ?></h1>
+<p>
+    <a href="<?= $this->url('etudiant', ['action' => 'add']) ?>">Ajouter</a>
+</p>
+
+<table class="table">
+<tr>
+    <th>Nom</th>
+    <th>Prenom</th>
+    <th>Age</th>
+    <th>Universite</th>
+    <th>&nbsp;</th>
+</tr>
+<?php foreach ($etudiants as $etudiant) : ?>
+    <tr>
+        <td><?= $this->escapeHtml($etudiant->nom) ?></td>
+        <td><?= $this->escapeHtml($etudiant->prenom) ?></td>
+        <td><?= $this->escapeHtml($etudiant->age) ?></td>
+        <td><?= $this->escapeHtml($etudiant->universite) ?></td>
+        <td>
+            <a href="<?= $this->url('etudiant', ['action' => 'edit', 'id' => $etudiant->id]) ?>">Modifier</a>
+            <a href="<?= $this->url('etudiant', ['action' => 'delete', 'id' => $etudiant->id]) ?>">Supprimer</a>
+        </td>
+    </tr>
+<?php endforeach; ?>
+</table>
